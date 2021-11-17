@@ -70,6 +70,11 @@ const prodSchema = new mongoose.Schema({
     amount: { type: Number, default: 0 },
     timeInHours: { type: Number, default: 0 }
   },
+  s_id: Number,
+  date_created: {
+    type: Date, default: Date.now
+  },
+  user_id: String,
   // tags:{
   //     Vshirt: {type: Number, default: 0},
   //     PoloShirt: {type: Number, default: 0},
@@ -83,11 +88,6 @@ const prodSchema = new mongoose.Schema({
   //     Hoodie: {type: Number, default: 0},
   //     American: {type: Number, default: 0}
   // },
-  s_id: Number,
-  date_created: {
-    type: Date, default: Date.now
-  },
-  user_id: String,
 })
 
 exports.ProdModel = mongoose.model("products", prodSchema);
