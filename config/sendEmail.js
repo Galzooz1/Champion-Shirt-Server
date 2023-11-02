@@ -5,8 +5,8 @@ require('dotenv').config();
 const myEmail = process.env.EMAIL;
 const emailPassword = process.env.EMAIL_PASSWORD;
 
-const myUser = configEmail.myEmail;
-const myPassword = configEmail.myPassword;
+// const myUser = configEmail.myEmail;
+// const myPassword = configEmail.myPassword;
 
 const transport = nodemailer.createTransport({
     service: "Gmail",
