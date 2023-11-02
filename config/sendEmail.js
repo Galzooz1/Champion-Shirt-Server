@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const { configEmail } = require('./secretData');
+// const { configEmail } = require('./secretData');
 require('dotenv').config();
 
 const myEmail = process.env.EMAIL;

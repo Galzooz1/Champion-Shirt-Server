@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const { config } = require("../config/secretData");
+// const { config } = require("../config/secretData");
 
 const databaseUrl = process.env.DATABASE_URL;
 // panda3 -> מיצג את השם של המסד נתונים
