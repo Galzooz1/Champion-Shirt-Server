@@ -42,7 +42,6 @@ router.get("/count", async(req, res) => {
   }
 })
 
-//WORK
 //get single product by s_id
 router.get("/single/:s_id", async(req, res) => {
   // let filterClean = (req.query.clean) ? { clean: req.query.clean } : {};
@@ -77,7 +76,6 @@ router.get("/single/:s_id", async(req, res) => {
 // }
 // })
 
-//WORK
 //Search for products by name, info, tags or category
 router.get("/search", async(req,res) => {
     let searchQ = req.query.q;
@@ -92,7 +90,6 @@ router.get("/search", async(req,res) => {
     }
 })
 
-//WORK
 //Add new product
 router.post("/", authToken,authAdminToken, async(req, res) => {
     let validBody = validProd(req.body);
@@ -112,7 +109,6 @@ router.post("/", authToken,authAdminToken, async(req, res) => {
     }
   })
 
-  //WORK
   //Edit existing product by s_id
   router.put("/:editId", authToken, authAdminToken, async (req, res) => {
     let editId = req.params.editId;
@@ -166,7 +162,6 @@ router.post("/", authToken,authAdminToken, async(req, res) => {
     }
   })
 
-  //WORK
   //Delete existing product by s_id
   router.delete("/:idDel", authToken,authAdminToken, async(req, res) => {
     let idDel = req.params.idDel;

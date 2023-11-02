@@ -2,15 +2,12 @@ const express = require('express');
 const bcrypt = require("bcrypt");
 const path = require("path");
 const _ = require("lodash");
-// const nodemailer = require('nodemailer');
 const { UserModel, validUser, validLogin, genToken, validEdit, generateConfirmationCode } = require("../models/userModel");
 const { authToken, authAdminToken } = require('../middlewares/auth');
 const router = express.Router();
-const { random } = require("lodash");
 const { sendConfirmationEmail } = require('../config/sendEmail');
 
 
-//WORK
 //GET users listing, only by admin
 router.get('/', authToken, authAdminToken, async (req, res) => {
   let perPage = (req.query.perPage) ? Number(req.query.perPage) : 4;
@@ -47,7 +44,6 @@ router.get("/count", async(req, res) => {
   }
 })
 
-//WORK
 //get single user by _id
 router.get("/single/:_id", authToken, authAdminToken, async (req, res) => {
   try {
@@ -61,7 +57,6 @@ router.get("/single/:_id", authToken, authAdminToken, async (req, res) => {
 
 })
 
-//WORK
 //Checking if Logged user is an admin
 router.post("/checkAdmin", authToken, authAdminToken, async (req, res) => {
   res.json({ auth: "success" })
@@ -71,7 +66,6 @@ router.post("/checkUser",authToken,async(req,res) => {
   res.json({auth:"success"})
 })
 
-//WORK
 //Get Self Data about user
 router.get("/myInfo", authToken, async (req, res) => {
   try {
@@ -85,7 +79,6 @@ router.get("/myInfo", authToken, async (req, res) => {
   }
 })
 
-//WORK
 //Login to system and get Token
 router.post("/login", async (req, res) => {
   let validBody = validLogin(req.body);
@@ -114,34 +107,7 @@ router.post("/login", async (req, res) => {
   }
 })
 
-// let transporter = nodemailer.createTransport(
-//   {
-//     service: 'gmail', auth: { user: configEmail.myEmail, pass: configEmail.myPassword }
-//   });
 
-// const sendEmail = (_email, _confirmationCode, name) => {
-//   let mailOptions = {
-//     from: configEmail.myEmail, to: _email, subject: 'Sending Email using Node.js',
-//     html: `<h1>Email Confirmation</h1>
-//     <h2>Hello ${name}</h2>
-//     <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-//         <a href=http://localhost:3005/confirm/${_confirmationCode}> Click here</a>`
-//   };
-
-//   transporter.sendMail(mailOptions, function (error, info) {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   });
-// }
-
-// tempCode = Number(tempCode);
-// await UserModel.updateOne({_id:user._id},{ConfirmationCode:ConfirmationCode});
-
-// await sendEmail(user.email, ConfirmationCode, user.firstName);
-//WORK
 // Sign up new user
 router.post("/", async (req, res) => {
   let validBody = validUser(req.body);
@@ -214,7 +180,6 @@ router.get("/confirm/:confirmationCode", async (req, res) => {
   }
 })
 
-//WORK
 //Edit existing user
 router.put("/:editId", authToken, async (req, res) => {
   let editId = req.params.editId;
@@ -274,7 +239,6 @@ router.put("/upload/:editId", authToken, async(req, res) => {
   }
 })
 
-//WORK
 //Delete existing user, only by admin
 router.delete("/:idDel", authToken, authAdminToken, async (req, res) => {
   let idDel = req.params.idDel;
@@ -288,7 +252,6 @@ router.delete("/:idDel", authToken, authAdminToken, async (req, res) => {
   }
 })
 
-//WORK
 //Change the role of the User, only by admin
 router.patch("/changeRole/:userId", authToken, authAdminToken, async (req, res) => {
   let userId = req.params.userId;

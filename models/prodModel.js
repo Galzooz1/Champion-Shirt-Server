@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const { random } = require("lodash");
-const { number, string } = require("joi");
 
 // const colorSchema = new mongoose.Schema({
 //   colors:[{
@@ -24,7 +23,6 @@ const prodSchema = new mongoose.Schema({
   image: String,
   price: Number,
   category_s_id: Number,
-  // New one:
   isClean: {
     type: Boolean,
     default: false

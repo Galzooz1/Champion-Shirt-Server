@@ -118,7 +118,6 @@ router.put("/:editId", authToken, authAdminToken, async(req, res) => {
     }
   })
 
-//WORK
 //Delete existing product by s_id
 router.delete("/:idDel", authToken, authAdminToken, async(req, res) => {
  let idDel = req.params.idDel;

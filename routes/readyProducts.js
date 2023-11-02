@@ -81,7 +81,6 @@ router.post("/", authToken, async(req, res) => {
     }
   })
 
-  //WORK
   //Edit existing product by s_id
   router.put("/:editId", authToken, async (req, res) => {
     let editId = req.params.editId;

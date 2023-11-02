@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-// const { random } = require("lodash");
 const jwt = require("jsonwebtoken");
 
 const secretKey = process.env.SECRET_KEY;

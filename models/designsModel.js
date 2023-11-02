@@ -42,7 +42,6 @@ exports.generateShortId = async () => {
     // משתנה בוליאן שבודק אם המספר הרנדומלי לא קיים לאף מוצר אחר
     let okFlag = false;
     
-    // while(okFlag == false){
     while(!okFlag){
       rnd = random(1,999999);
       let data = await this.DesignModel.findOne({s_id:rnd});
