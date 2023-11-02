@@ -20,6 +20,12 @@ exports.authToken = (req,res,next) => {
     next();
   }
   catch (err) {
+    if(err instanceof jwt.JsonWebTokenError && err.message === 'jwt malformed') {
+      console.log(err);
+      res.status(400).json({msg:"Hey, It's Gal, JWT is malformed!"});
+    } else {
+      console.error('JWT verification error:', err)
+    }
     console.log(err);
     res.status(400).json({msg:"token invalid or expired"});
   }
