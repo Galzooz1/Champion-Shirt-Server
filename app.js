@@ -4,6 +4,7 @@ const http = require("http");
 const fileUpload = require("express-fileupload");
 const {routesInit , corsAccessControl} = require("./routes/config_routes");
 const mongoConnect = require("./db/mongoConnect");
+require('dotenv').config();
 
 const app = express();
 //מגביל של גודל קובץ ל5 מגה בייט

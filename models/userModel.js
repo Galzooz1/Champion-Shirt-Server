@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 // const { random } = require("lodash");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+
+const secretKey = process.env.SECRET_KEY;
 
 let userSchema = new mongoose.Schema({
   firstName: String,
@@ -31,7 +33,7 @@ let userSchema = new mongoose.Schema({
 exports.UserModel = mongoose.model("users", userSchema);
 
 exports.genToken = (_id) => {
-  let token = jwt.sign({ _id }, "monkeysSecret", { expiresIn: "60mins" });
+  let token = jwt.sign({ _id }, secretKey, { expiresIn: "60mins" });
   return token;
 }
 

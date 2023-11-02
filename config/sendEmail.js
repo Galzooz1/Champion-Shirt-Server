@@ -1,5 +1,9 @@
 const nodemailer = require("nodemailer");
 const { configEmail } = require('./secretData');
+require('dotenv').config();
+
+const myEmail = process.env.EMAIL;
+const emailPassword = process.env.EMAIL_PASSWORD;
 
 const myUser = configEmail.myEmail;
 const myPassword = configEmail.myPassword;
@@ -7,15 +11,15 @@ const myPassword = configEmail.myPassword;
 const transport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-      user: myUser,
-      pass: myPassword,
+      user: myEmail,
+      pass: emailPassword,
     },
   });
 
 module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
     console.log("Check");
     transport.sendMail({
-      from: myUser,
+      from: EMAIL,
       to: email,
       subject: "Please confirm your account - Champion Shirts",
       html: `<h1>Email Confirmation</h1>

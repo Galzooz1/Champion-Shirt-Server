@@ -8,7 +8,6 @@ const { authToken, authAdminToken } = require('../middlewares/auth');
 const router = express.Router();
 const { random } = require("lodash");
 const { sendConfirmationEmail } = require('../config/sendEmail');
-// const { configEmail } = require('../config/secretData');
 
 
 //WORK

@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
-const {UserModel} = require("../models/userModel")
+const {UserModel} = require("../models/userModel");
+require('dotenv').config();
 
+const secretKey = process.env.SECRET_KEY;
 
 exports.authToken = (req,res,next) => {
   let token = req.header("auth-token");
@@ -10,7 +12,7 @@ exports.authToken = (req,res,next) => {
   try{
     // קידוד הפוך לאובייקט שאנחנו נוכל לדבר איתו
     // שהיה שמור בהצפנה ש הטוקן
-    let decodeToken = jwt.verify(token,"monkeysSecret");
+    let decodeToken = jwt.verify(token,secretKey);
     // מייצר מאפיין חדש עם המידע של היוזר בעיקר
     // האיי די שלו 
     // הסיבה שיצרנו אותו בתור מאפיין

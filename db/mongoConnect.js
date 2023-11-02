@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 const { config } = require("../config/secretData");
+
+const databaseUrl = process.env.DATABASE_URL;
 // panda3 -> מיצג את השם של המסד נתונים
-mongoose.connect(`mongodb+srv://${config.mongoUser}:${config.mongoPassword}@cluster0.1dcgs.mongodb.net/FinalProject`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${databaseUrl}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const db = mongoose.connection;
